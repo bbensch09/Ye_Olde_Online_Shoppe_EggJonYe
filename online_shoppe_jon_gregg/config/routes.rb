@@ -7,6 +7,7 @@ root 'items#index'
 
 resources :items
 resources :users
+resources :categories
 get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'
 get '/logout' => 'sessions#destroy'
