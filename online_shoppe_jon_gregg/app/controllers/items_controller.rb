@@ -25,12 +25,13 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @categories = Category.all
     @item = Item.new
   end
 
   def create
     @item = Item.new(item_params)
-
+    puts @item
     if @item.save
       redirect_to @item
     else
@@ -47,7 +48,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:id, :name, :price, :image_url, :description, :category)
+    params.require(:item).permit(:id, :name, :price, :image_url, :description, :category_id)
   end
 
 
