@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration
       t.float :price
       t.string :image_url
       t.text :description
-      t.string :category
+      t.belongs_to :category
 
       t.timestamps null: false
     end

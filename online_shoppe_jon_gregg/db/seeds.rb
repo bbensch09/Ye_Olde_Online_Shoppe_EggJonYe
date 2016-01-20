@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+def add_categories
+  category_names = ['things for walls', 'things for torsos', 'things to go on things', 'things to read']
+  category_names.each do |name|
+    new_category = Category.new
+    new_category.name = name
+  end
+end
+
+case Rails.env
+when "development"
+   add_categories
+when "production"
+   add_categories
+end
