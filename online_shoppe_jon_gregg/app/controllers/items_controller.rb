@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  http_basic_authenticate_with name: "EggJon", password: "scrambled", except:  [:index, :show]
+  before_action :authorize, except: [:index, :show]
 
   def index
     @items = Item.all
@@ -49,5 +49,6 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:id, :name, :price, :image_url, :description, :category)
   end
+
 
 end

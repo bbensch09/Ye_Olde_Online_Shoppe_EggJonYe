@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  http_basic_authenticate_with name: "EggJon", password: "scrambled", except:  [:index, :show]
+  before_action :authorize
 
   def index
     @users = User.all
@@ -32,22 +32,24 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user
+      session[:user_id] = @user.id
+      redirect_to '/'
     else
       render 'new'
     end
   end
 
   def destroy
+
     @user = User.find(params[:id])
     @user.destroy
-
+    session[:user_id] = nil
     redirect_to users_path
   end
 
   private
   def user_params
-    params.require(:user).permit(:id, :username, :email, :first_name, :last_name, :hashed_password)
+    params.require(:user).permit(:id, :username, :email, :first_name, :last_name, :password)
   end
 
 end

@@ -4,18 +4,23 @@ class SessionsController < ApplicationController
   end
 
   def create
-    #test credentials
-    #initialize session hash
+    user = User.find_by_username(params[:username])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect_to '/'
+    else
+      redirect_to '/login'
+    end
   end
 
   def destroy
-    #empty session hash
-    redirect_to items_path
+    session[:user_id] = nil
+    redirect_to '/'
   end
 
   private
   def session_params
-    params.require(:session).permit(:user_id, :hashed_password)
+    params.require(:session).permit(:user_id, :password)
   end
 
 end

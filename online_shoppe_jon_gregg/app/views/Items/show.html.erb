@@ -13,5 +13,8 @@
 
 <img src="<%= @item.image_url %>" alt="Picture of <%=@item.name%>">
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
+
+<% if admin? %>
+  <%= link_to 'Edit', edit_item_path(@item) %>
+<% end %>
 <%= link_to 'Back', items_path %>
