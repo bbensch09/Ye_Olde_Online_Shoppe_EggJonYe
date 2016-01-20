@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+  http_basic_authenticate_with name: "EggJon", password: "scrambled", except:  [:index, :show]
+
   def index
     @items = Item.all
   end
