@@ -12,6 +12,7 @@ def add_categories
   category_names.each do |name|
     new_category = Category.new
     new_category.name = name
+    new_category.save!
   end
 end
 
