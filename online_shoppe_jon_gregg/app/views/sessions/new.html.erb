@@ -1,0 +1,17 @@
+<h1>Login</h1>
+
+<%= form_tag '/login' do %>
+
+  <p>
+    username:
+    <%=  text_field_tag :username %>
+  </p>
+  <p>
+    password:
+    <%= password_field_tag :password %>
+  </p>
+    <%= submit_tag "Submit" %>
+
+<% end %>
+
+<%= link_to 'Home', items_path %>

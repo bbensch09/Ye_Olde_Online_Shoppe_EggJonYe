@@ -7,6 +7,11 @@ root 'items#index'
 
 resources :items
 resources :users
+get '/login' => 'sessions#new'
+post '/login' => 'sessions#create'
+get '/logout' => 'sessions#destroy'
+
+
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
