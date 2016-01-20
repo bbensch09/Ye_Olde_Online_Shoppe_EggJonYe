@@ -1,0 +1,17 @@
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @item.price %>
+</p>
+
+<h2>Description</h2>
+<%= @item.description %>
+
+<img src="<%= @item.image_url %>" alt="Picture of <%=@item.name%>">
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
