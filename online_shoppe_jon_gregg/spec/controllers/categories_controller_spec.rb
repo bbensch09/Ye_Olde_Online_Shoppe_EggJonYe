@@ -17,8 +17,6 @@ RSpec.describe CategoriesController, type: :controller do
       end
     end
 
-
-
     describe 'POST #create' do
       let(:attributes){ {name: "Alfred", description: "ugly", price: 20.0, category_id: 1}}
       it "provides correct response" do
@@ -49,3 +47,47 @@ RSpec.describe CategoriesController, type: :controller do
   end
 end
 end
+
+##### From TreAbe
+#   describe "GET #index" do
+#     before(:each) do
+#       get :index
+#     end
+#     it "responds with a 200" do
+#       expect(response.status).to eq(200)
+#     end
+#   end
+
+# describe 'category create' do
+#     context 'when given valid params' do
+#       let :category_params do
+#         {title: 'trev'}
+#        end
+#        it 'should create the category and redirect to category index' do
+#         expect{
+#           post :create, category: category_params
+#           }.to change{Category.count}.by(1)
+#         end
+#       end
+#     context 'when given invalid params' do
+#       let :category_params do
+#         {title: ''}
+#        end
+#       it 'should not create the category and throw an error message' do
+#         expect{
+#           post :create, category: category_params
+#         }.to_not change{Category.count}
+#       end
+#     end
+
+
+#   describe 'category edit' do
+#     context 'when given valid params' do
+#       let :category do Category.create(title: 'hveavhb')
+#       end
+#       let! (:title) {"trev"}
+#          it 'updates category title' do
+#           put :update, id: category.id, category: { title: title }
+#       expect(category.reload.title).to eq(category.title)
+#     end
+#   end

@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
 
   def new
     @categories = Category.all
+    puts @categories
     @item = Item.new
   end
 

@@ -10,5 +10,12 @@ FactoryGirl.define do
   factory :category do
     name { Faker::Internet.user_name }
   end
-end
 
+  factory :item do
+    name { Faker::Commerce.product_name }
+    price { Faker::Commerce.price }
+    description { Faker::Company.bs }
+    image_url { Faker::Placeholdit.image }
+    category_id { rand(3) +1 }
+  end
+end

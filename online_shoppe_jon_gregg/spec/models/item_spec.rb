@@ -1,4 +1,6 @@
-describe Item do
+require 'rails_helper'
+
+RSpec.describe Item, :type => :model do
     # Basic validations
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name) }
@@ -8,6 +10,7 @@ describe Item do
     # Associations
     it { should belong_to(:category) }
     it { should have_many(:users).through(:shopping_carts) }
+    it { should have_many(:shopping_carts) }
 end
 
 

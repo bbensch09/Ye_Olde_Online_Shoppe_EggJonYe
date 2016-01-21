@@ -1,34 +1,22 @@
-
-# RSpec.describe User, type :model do
-#   let(:user_no_username) {User.new(email:"x@yahoo.com")}
-#   user_no_username.password = "password"
-#   describe 'validations' do
-#     context 'will raise an error'
-#     it 'when the username field is empty' do
-#       expect(user_no_username).to
-# _______________________________________________________________
-# This is a skeleton for testing models including examples of validations, callbacks,
-# scopes, instance & class methods, associations, and more.
-# Pick and choose what you want, as all models don't NEED to be tested at this depth.
-#
-# I'm always eager to hear new tips & suggestions as I'm still new to testing,
-# so if you have any, please share!
-#
-# @kyletcarlson
-#
-# This skeleton also assumes you're using the following gems:
-#
-# rspec-rails: https://github.com/rspec/rspec-rails
-# Shoulda-matchers: https://github.com/thoughtbot/shoulda-matchers
-# shoulda-callback-matchers: https://github.com/beatrichartz/shoulda-callback-matchers
-# factory_girl_rails: https://github.com/thoughtbot/factory_girl_rails
-
 require 'spec_helper'
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
+    # Basic validations
+    it { should validate_presence_of(:username) }
+    it { should validate_uniqueness_of(:username) }
+    it { should validate_presence_of(:email) }
+    it { should validate_uniqueness_of(:email) }
+    it { should validate_presence_of(:password_digest) }
+    # Associations
+    it { should have_many(:user_addresses) }
+    it { should have_many(:shopping_carts) }
+    it { should have_many(:financial_details) }
+    it { should have_many(:items).through(:shopping_carts) }
+    # Security
+    # it { should has_secure_password }
 
-
+end
 
   # it "has a valid factory" do
     # Using the shortened version of FactoryGirl syntax.
@@ -176,4 +164,3 @@ RSpec.describe User, :type => :model do
 #     end
 #   end
 
-end

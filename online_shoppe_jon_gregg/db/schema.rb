@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160120061152) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "shopping_cart", id: false, force: :cascade do |t|
+  create_table "shopping_carts", id: false, force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "user_id", null: false
   end
